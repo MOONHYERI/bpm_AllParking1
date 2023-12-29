@@ -38,6 +38,7 @@ h2{
     display: flex;
     color: white;
     transform: translate(-50%, -50%);
+    line-height: 40px;
 }
 .charge_form1 p{
     width: 300px;
@@ -70,7 +71,7 @@ h2{
     align-items: center;
     margin: auto;
 }
-.form3  a{
+.form3 a{
     width: 200px;
     height: 70px;
     border: 1px solid #666;

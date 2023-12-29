@@ -21,7 +21,9 @@ section {
     font-family: "Poppins", sans-serif;
     font-weight: 900;
 }
-
+.keyboard{
+    z-index: 1;
+}
 
 
 .key {
@@ -29,6 +31,7 @@ section {
     display: inline-block;
     letter-spacing: -1vw;
     transition: transform 0.2s;
+
 }
 
 

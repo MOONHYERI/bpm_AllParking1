@@ -95,6 +95,19 @@ section .sec3 {
     top: 35%;
 }
 
+.me4{
+    position: absolute;
+    left: 50%;
+    top: 35%;
+    transform: translateX(-50%);
+}
+.parking3{
+    width: 1200px;
+    height: 450px;
+}
+
+
+
 section .moveTopBtn {
     position: fixed;
     display: inline;
@@ -118,7 +131,7 @@ section .moveTopBtn.onn {
     /* bottom: 350px; */
     /* z-index: 99; */
     /* bottom: -120px; */
-    top: 105%;
+    top: 110%;
 }
 
 /*-------------------------------------------------------*/
@@ -128,3 +141,4 @@ section .moveTopBtn.onn {
     top: 1000px;
     bottom: 500px;
 }
+/*-------------------------------------------------------*/

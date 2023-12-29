@@ -4,7 +4,8 @@ html {
     font-family: "Noto Sans KR", sans-serif;
 
 }
-body{
+
+body {
     margin: 0;
     padding: 0;
     position: relative;
@@ -21,7 +22,7 @@ header {
     z-index: 9999;
 }
 
-.logo img{
+.logo img {
     position: absolute;
     font-size: 50px;
     top: 1%;
@@ -48,12 +49,12 @@ ul {
     text-align: center;
 }
 
-.menu>li {
+.menu > li {
     width: 250px;
     text-align: center;
 }
 
-.menu>.font {
+.menu > .font {
     font-size: 21px;
     font-weight: bold;
 }
@@ -70,7 +71,7 @@ ul {
     font-size: 15px;
 }
 
-.sign>li {
+.sign > li {
     line-height: 50px;
     display: block;
     text-align: center;
@@ -100,7 +101,7 @@ ul {
     z-index: 999;
 }
 
-.sub>li {
+.sub > li {
     height: 60px;
     line-height: 60px;
     width: 165px;
@@ -110,11 +111,150 @@ a {
     text-decoration-line: none;
     color: inherit;
 }
+
 .sub li a:hover {
     font-weight: bold;
     color: black;
 }
 
+*, *:before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+.hidden {
+    display: none;
+}
+/*------------------------------------------------------------------*/
+@media screen and (min-width: 625px) {
 
-*, *:before, *::after { margin: 0; padding: 0; box-sizing: border-box }
+    #menu {
+        display: flex;
+    }
+    .menu_phone {
+        display: none;
+    }
+    .mini_menu{
+        display: none;
+    }
+}
+@media all and (max-width: 500px) {
+    header {
+        width: 483px;
+        height: 80px;
+        display: flex;
+    }
+    .logo img{
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        width: 150px;
+        height: 70px;
+        transform: translateX(-50%);
+    }
+    .menu {
+        display: none;
+    }
+    .sign{
+        display: none;
+    }
+    .sign{
+        width: 100px;
+    }
+    .menu_phone a img{
+        position: absolute;
+        top: 30%;
+        left: 11%;
+        width: 35px;
+        height: 35px;
+        font-weight: bold;
+    }
+    .mini_menu {
+        position: absolute;
+        width: 100%;
+        height: 60vh;
+        top: 102.5%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-out;
+        background-color: white;
+        z-index: 2;
+    }
+    .mini_menu > li {
+        font-size: 15px;
+        width: 100%;
+        height: 8vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+    .mini_menu.active {
+        top: 80px;
+        background-color: white;
+        opacity: 0.9;
+        max-height: 280px; /* 최대 높이를 적절한 값으로 조정하세요. */
+    }
 
+    .sub1{
+        text-decoration: none;
+        position: absolute;
+        left: 60%;
+        width: 100px;
+        list-style-type: none;
+        display: none;
+        max-height: 0;
+        overflow: hidden;
+    }
+    .sub1.active{
+        display: block;
+        left: 100px;
+        max-height: 200px;
+    }
+    .sub2{
+        text-decoration: none;
+        position: absolute;
+        left: 60%;
+        width: 100px;
+        list-style-type: none;
+        display: none;
+        max-height: 0;
+        overflow: hidden;
+    }
+    .sub2.active{
+        display: block;
+        left: 100px;
+        max-height: 200px;
+    }
+    .sub3{
+        text-decoration: none;
+        position: absolute;
+        left: 60%;
+        width: 100px;
+        list-style-type: none;
+        display: none;
+        max-height: 0;
+        overflow: hidden;
+    }
+    .sub3.active{
+        display: block;
+        left: 100px;
+        max-height: 200px;
+    }
+    .sub4{
+        text-decoration: none;
+        position: absolute;
+        left: 60%;
+        width: 100px;
+        list-style-type: none;
+        display: none;
+        max-height: 0;
+        overflow: hidden;
+    }
+    .sub4.active{
+        display: block;
+        left: 100px;
+        max-height: 200px;
+    }
+
+}
