@@ -24,7 +24,7 @@ public class InfoBoardController {
     private final InfoCommentService infoCommentService;
     @GetMapping("/save")
     public String saveForm(){
-        return "boardwrite";
+        return "infoboard/boardwrite";
     }
     @PostMapping("/savePcro")
     public String save(@ModelAttribute InfoBoardDTO infoBoardDTO) throws IOException {
@@ -37,7 +37,7 @@ public class InfoBoardController {
         //db에서  전체 게시글 데이터를 가져와서 List.html에 보여준다.
         List<InfoBoardDTO> infoBoardDTOList = infoBoardService.findAll();
         model.addAttribute("boardList", infoBoardDTOList);
-        return "boardinfo";
+        return "infoboard/boardinfo";
 
     }
     @GetMapping("/{id}")
@@ -54,20 +54,20 @@ public class InfoBoardController {
         model.addAttribute("commentList", infoCommentDTOList);
         model.addAttribute("board", infoBoardDTO);
         model.addAttribute("page", pageable.getPageNumber());
-        return "board";
+        return "infoboard/board";
 
     }
     @GetMapping("/update/{id}")
     public String updateForm(@PathVariable Long id, Model model){
         InfoBoardDTO boardDTO = infoBoardService.findById(id);
         model.addAttribute("boardUpdate",boardDTO);
-        return "update";
+        return "infoboard/update";
     }
     @PostMapping("/update")
     public String update(@ModelAttribute InfoBoardDTO infoBoardDTO, Model model){
         InfoBoardDTO board = infoBoardService.update(infoBoardDTO);
         model.addAttribute("board",board);
-        return "board";
+        return "infoboard/board";
 //        return "redirect:/board/"+boardDTO.getId();
 
     }
@@ -98,7 +98,7 @@ public class InfoBoardController {
         model.addAttribute("boardList",boardList);
         model.addAttribute("startPage",startPage);
         model.addAttribute("endPage",endPage);
-        return "boardinfo";
+        return "infoboard/boardinfo";
 
 
     }

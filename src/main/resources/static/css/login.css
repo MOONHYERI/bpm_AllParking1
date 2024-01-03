@@ -5,6 +5,7 @@ section {
     width: 100%;
     height: 83vh;
     display: flex;
+    background-image: url("static/image/background.png");
 }
 .loginform{
     width: 500px;
@@ -103,5 +104,34 @@ section {
      margin-top: 15px;
      font-size: 15px;
  }
-
+ .pw i{
+     position: absolute;
+     top: 0;
+     bottom: 0;
+     right: 0;
+     margin: auto 2px;
+     height: 30px;
+     font-size: 22px;
+     cursor: pointer;
+}
 /*-------------------------------------------------------*/
+@media screen and (min-width: 625px) {
+    .sign_phone{
+        display: none;
+    }
+
+}
+@media all and (max-width: 500px) {
+    footer {
+        display: none;
+    }
+    .section{
+        width: 480px;
+    }
+    .loginform{
+        position: absolute;
+        top: 65%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}

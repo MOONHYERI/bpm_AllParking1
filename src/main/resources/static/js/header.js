@@ -19,25 +19,25 @@ $(function () {
         $(nav2).stop().slideUp();
     });
 /*---------------------------------------------------------*/
-    $(".menu_phone").click(function () {
-        miniMenu.toggleClass("active");
-    });
+    $(document).ready(function () {
+        $(".menu_phone").click(function () {
+            $(".mini_menu").slideToggle();
+            $(".mini_sign").slideUp(); // sign_phone이 열려 있을 경우 닫음
+        });
 
-    $(".service_btn1").click(function () {
-        sub1.toggleClass("active");
-    });
+        $(".font").click(function () {
+            var subMenu = $(this).find(".sub_menu");
+            $(".sub_menu").not(subMenu).slideUp();
+            subMenu.slideToggle();
+        });
 
-    $(".service_btn2").click(function () {
-        sub2.toggleClass("active");
+        $(".sign_phone").click(function () {
+            $(".mini_sign").slideToggle();
+            $(".mini_menu").slideUp(); // menu_phone이 열려 있을 경우 닫음
+        });
     });
+    /*---------------------------------------------------------*/
 
-    $(".service_btn3").click(function () {
-        sub3.toggleClass("active");
-    });
-
-    $(".service_btn4").click(function () {
-        sub4.toggleClass("active");
-    });
 });
-/*---------------------------------------------------------*/
+
 

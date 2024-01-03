@@ -24,6 +24,7 @@ section {
     color: white;
     border: 0px;
     border-radius: 5px;
+    cursor: pointer;
 }
 .basic{
     width: 500px;
@@ -84,6 +85,7 @@ section {
 .name input{
     margin-left: 110px;
     border: 0px;
+    cursor: pointer;
 }
 .basic .number{
     justify-content: flex-start;
@@ -121,6 +123,7 @@ section {
     background-color: black;
     color: white;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 /* .id{
@@ -136,3 +139,14 @@ section {
     display: flex;
 } */
 /*-------------------------------------------------------*/
+@media screen and (min-width: 625px) {
+    .sign_phone{
+        display: none;
+    }
+
+}
+@media all and (max-width: 500px) {
+    footer {
+        display: none;
+    }
+}

@@ -21,7 +21,8 @@ section {
     font-family: "Poppins", sans-serif;
     font-weight: 900;
 }
-.keyboard{
+
+.keyboard {
     z-index: 1;
 }
 
@@ -33,7 +34,6 @@ section {
     transition: transform 0.2s;
 
 }
-
 
 
 @keyframes pressDown1 {
@@ -123,27 +123,28 @@ section {
         transform: translateY(10px);
     }
 }
+
 @keyframes pressDown9 {
     30%,
     40%,
-    100%  {
+    100% {
         transform: translateY(0);
     }
     40% {
         transform: translateY(10px);
     }
 }
+
 @keyframes pressDown10 {
     35%,
     45%,
     100% {
         transform: translateY(0);
     }
-    35%  {
+    35% {
         transform: translateY(10px);
     }
 }
-
 
 
 .key:nth-child(1) {
@@ -177,6 +178,7 @@ section {
 .key:nth-child(8) {
     animation: pressDown8 3.2s infinite;
 }
+
 .key:nth-child(9) {
     animation: pressDown8 3.8s infinite;
 }
@@ -185,3 +187,18 @@ section {
     animation: pressDown8 4.0s infinite;
 }
 
+/*---------------------------------------------------------*/
+@media screen and (min-width: 625px) {
+    .sign_phone {
+        display: none;
+    }
+}
+
+@media all and (max-width: 500px) {
+    .mini_menu {
+        display: none;
+    }
+    footer {
+        display: none;
+    }
+}

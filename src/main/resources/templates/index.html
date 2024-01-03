@@ -16,7 +16,7 @@
 </head>
 <body>
 <div class="container"></div>
-<header th:insert="header :: header"></header>
+<header th:insert="fragments/header :: header"></header>
 <section>
     <div class="keyboard">
         <span class="key">A</span>
@@ -33,6 +33,6 @@
     </div>
 
 </section>
-<footer th:include="footer :: footer"></footer>
+<footer th:include="fragments/footer :: footer"></footer>
 </body>
 </html>

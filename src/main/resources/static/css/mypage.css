@@ -57,7 +57,7 @@ section {
 .basic .text{
     width: 140px;
     height: 30px;
-    margin-top: 15px;
+    margin-bottom: 15px;
 }
 .car{
     width: 500px;
@@ -149,3 +149,14 @@ section {
     display: flex;
 } */
 /*-------------------------------------------------------*/
+@media screen and (min-width: 625px) {
+    .sign_phone{
+        display: none;
+    }
+
+}
+@media all and (max-width: 500px) {
+    footer {
+        display: none;
+    }
+}

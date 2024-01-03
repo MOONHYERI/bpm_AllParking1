@@ -264,3 +264,33 @@ h3{
         width: 0;   /*시작할 때만 width가 0이게만 하면 됨*/
     }
 }
+/*--------------------------------------------*/
+@media screen and (min-width: 625px) {
+    .sign_phone{
+        display: none;
+    }
+
+}
+@media all and (max-width: 500px) {
+    footer {
+        display: none;
+    }
+    section{
+        display: inline-block;
+    }
+    .team{
+        width: 500px;
+        height: 800px;
+        position: absolute;
+        top: 70%;
+    }
+    .member{
+        width: 500px;
+        height: 800px;
+        display: inline-block;
+    }
+    section .team .member img{
+        width: 120px;
+        height: 120px;
+    }
+}

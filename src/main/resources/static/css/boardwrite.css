@@ -65,3 +65,14 @@ section {
     margin-bottom: 15px;
 }
 /*-------------------------------------------------------*/
+@media screen and (min-width: 625px) {
+    .sign_phone{
+        display: none;
+    }
+
+}
+@media all and (max-width: 500px) {
+    footer {
+        display: none;
+    }
+}
