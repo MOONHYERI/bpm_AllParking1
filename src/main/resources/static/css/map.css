@@ -10,150 +10,52 @@ body {
     padding: 0;
 }
 
-header {
-    position: fixed;
-    width: 100%;
-    height: 100px;
-    border-bottom: 2px solid rgb(0, 119, 255);
-    background-color: white;
-    z-index: 99;
-}
-
-.logo {
-    font-size: 55px;
-    top: -30px;
-    left: 150px;
-    height: 100px;
-    width: 200px;
-
-    position: absolute;
-}
-
-ul {
-
-    list-style: none;
-}
-
-.menu {
-    position: absolute;
-    left: 50%;
-    margin-left: -500px;
-    justify-content: space-between;
-    top: -15px;
-    height: 100px;
-    width: 1000px;
-    display: flex;
-    line-height: 95px;
-    padding-right: 2px;
-    text-align: center;
-
-
-}
-
-.menu>li {
-
-    width: 250px;
-    text-align: center;
-
-
-}
-
-.menu>.font {
-    font-size: 21px;
-    font-weight: bold;
-}
-
-.sign {
-    position: absolute;
-    right: 2%;
-    bottom: 12px;
-    height: 50px;
-    width: 150px;
-    justify-content: space-between;
-    display: flex;
-    font-size: 15px;
-}
-
-.sign>li {
-    line-height: 50px;
-    display: block;
-    text-align: center;
-    width: 100px;
-}
-
-.container {
-    display: none;
-    position: absolute;
-    top: 100px;
-    height: 200px;
-    width: 100%;
-    background-color: white;
-    opacity: 0.7;
-    z-index: 99;
-    border-bottom: 1px solid #cfcfcf;
-}
-
-.sub {
-    display: none;
-    list-style: none;
-    font-size: 18px;
-    font-weight: 300;
-    height: 206px;
-    margin-left: 4px;
-    margin-top: 17px;
-    z-index: 99;
-}
-
-.sub>li {
-    height: 60px;
-    line-height: 60px;
-    width: 165px;
-
-}
-
-a {
-    text-decoration-line: none;
-    color: inherit;
-    /* 링크의 색상 제거 */
-
-}
-
-/*--------------------------------------------------------*/
 section {
     position: relative;
     width: 100%;
     display: flex;
 }
-.maper{
-    width: 450px;
-    height: 931px;
-    align-content: space-between;
-    display: flex;
-    
+#wrap {
+    width:100%;
+    height:100px;
+    background:white;
 }
-.maper .list{
-    /* width: 450px;
-    border: 1px solid black; */
-    width: 450px;
-    height: 100%;
+#sidebar {
+    background: white;
     margin-top: 100px;
-    position: fixed;
+    width: 400px;
+    height: 100%;
     top: 0;
-    left: -450px;
-    z-index: 3;
-    transition: all .35s;
-    background-color: white;
-    border-right: 1px solid black;
+    left: -400px;
+    position: fixed;
+    border-right: 1px solid;
+    z-index: 1;
+}
+
+#sidebar li {
+    margin: 0 0 20px;
+    list-style: none;
+}
+#toggleButton {
+    background: none;
+    background: black;
+    position: absolute;
+    top: 370px;
+    left: 400px;
+    width: 52px;
+    height: 52px;
+    border: none;
+    color: white;
+    border-radius: 0px 5px 5px 0px;
+    z-index: 1;
+}
+
+.map{
+    width: 100%;
+    height: 97vh;
 }
 .list p{
     line-height: 50px;
-}
-.maper .map{
-    width: 100%;
-    margin-top: 100px;
-    border:  1px solid black;
-}
-section .maper .list p{
     width: 100%;
     height: 50px;
     margin: auto 0;
@@ -161,89 +63,65 @@ section .maper .list p{
     text-align: center;
     border-bottom: 1px solid black;
 }
-.serch{
+
+.lible{
+    border-bottom: 1px solid #cfcfcf;
+}
+
+
+.search-form{
     display: flex;
     justify-content: space-around;
     text-align: center;
     padding: 5px;
     border-bottom: 1px solid black;
 }
-.serch>.serchtext{
+.search-form>.search-text{
     display: block;
     width: 300px;
     height: 30px;
 }
-.serch>.serchbt{
+.search-form>.search-btn{
     display: block;
     width: 70px;
     height: 30px;
     margin-top:3px;
-    
-} 
-table{
+}
+#table{
     width: 100%;
-    height: 100px;
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
-    margin: 1px;
+    height: 650px;
 }
-table th{
+#table th{
+    width: 100px;
+    /*font-weight: bold;*/
     padding: 0;
-    text-align: center;
+    text-align: left;
 }
-
-.btn{
-    display: none;
-    font-size: 15px;
-    margin-top: 350px;
-    left: 450px;
-
-    z-index: -3;
+#table td{
+    width: 70px;
+    font-size: 13px;
+    text-align: left;
 }
-.btn + label{
-    display: block;
-    width: 60px;
-    height: 50px;
-    left: 0;
-    top: calc(50% - 25px);
-    transition: all 0.35s;
-    position: fixed;
+#table tr:nth-child(1){
+    color: rgb(0, 119, 255);
+    font-weight: bold;
 }
-.btn:checked + label{
-    z-index: 2;
-    left: 450px;
+nav{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
 }
-.btn:checked + label + div{
-    left: 0;
-}
-label img{
-    width: 50px;
-    height: 50px;
-}
-
-/*-------------------------------------------------------*/
-footer {
-    margin: auto;
-    width: 1000px;
-    height: 100px;
-    margin-top: 30px;
-    border-top: 1px solid black;
-}
-
-.feet {
-    text-align: center;
-}
-
-.foot {
-    text-align: center;
-}
-
-.foot>a {
-    padding-left: 10px;
+#userLocationButton1 img{
+    width: 30px;
+    height: 30px;
 }
 /*-----------------------------------------------------*/
 @media screen and (min-width: 625px) {
     .sign_phone{
+        display: none;
+    }
+    #userLocationButton2{
         display: none;
     }
 
@@ -252,4 +130,31 @@ footer {
     footer {
         display: none;
     }
+
+    #userLocationButton1{
+        display: none;
+    }
+    #userLocationButton2{
+        position: absolute;
+        top: 10%;
+        left: 5%;
+        z-index: 2;
+        border: 1px solid black;
+        background-color: white;
+        border-radius: 3px 3px 3px 3px;
+    }
+    #userLocationButton2 img{
+        width: 30px;
+        height: 30px;
+    }
+    #userLocationButton2:active {
+        box-shadow: inset -.3rem -.1rem 1.4rem  #999999, inset .3rem .4rem .8rem #BEC5D0;
+        cursor: pointer;
+    }
+#sidebar{
+    z-index: 3;
+    position: absolute;
+    top: -2%;
+}
+
 }

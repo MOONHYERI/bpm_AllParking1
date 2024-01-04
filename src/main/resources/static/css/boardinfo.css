@@ -105,4 +105,43 @@ button{
     footer {
         display: none;
     }
+    section{
+        width: 500px;
+        height: 800px
+    }
+    .bord{
+        width: 450px;
+    }
+    .bord-table{
+        width: 450px;
+    }
+    tr{
+        font-size: 13px;
+    }
+    thead tr{
+        font-size: 15px;
+    }
+    .page{
+        width: 450px;
+    }
+    .paging{
+        margin: 0 auto;
+    }
+    .bord ul{
+        width: 450px;
+    }
+    select{
+        width: 80px;
+        height: 30px;
+        padding: 0;
+        flex-wrap: nowrap;
+    }
+    .bord ul input{
+        width: 200px;
+        height: 30px;
+    }
+    button{
+        height: 30px;
+        padding: 0;
+    }
 }

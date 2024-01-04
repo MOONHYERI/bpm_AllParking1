@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 제이쿼리 불러오기 -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/map.css}"/>
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+
+    <script th:src="@{/js/header.js}"></script>
+    <script type="text/javascript"
+            src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=95d7d2504da439f6db9a4e285b808af8"></script>
+
+    <title>ALL PARKING
+    </title>
+    <style>
+        .search-form{
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            padding: 5px;
+            border-bottom: 1px solid black;
+        }
+        .search-form>.search-text{
+            display: block;
+            width: 300px;
+            height: 30px;
+        }
+        .search-form>.search-btn{
+            display: block;
+            width: 70px;
+            height: 30px;
+            margin-top:3px;
+        }
+        #table{
+            width: 100%;
+            height: 650px;
+        }
+        #table th{
+            width: 100px;
+            padding: 0;
+            text-align: left;
+        }
+        #table td{
+            width: 70px;
+            font-size: 13px;
+            text-align: left;
+        }
+        .pagination {
+            display: flex;
+            justify-content: space-between;
+            width: 200px;
+        }
+
+        .pagination .page-item {
+            margin-right: 15px;
+        }
+    </style>
+    <script>
+        $(function () {
+            var duration = 300;
+
+            var $side = $('#sidebar');
+            var $toggleButton = $('#toggleButton');
+            var $toggleIcon = $('#toggleIcon');
+
+            $toggleButton.on('click', function () {
+                $side.toggleClass('open');
+
+                if ($side.hasClass('open')) {
+                    $side.stop(true).animate({left: '0px'}, duration);
+                    $toggleButton.find('.btn_t');
+                    $toggleIcon.attr('src', '/image/angle-left-solid.svg');
+                } else {
+                    $side.stop(true).animate({left: '-400px'}, duration);
+                    $toggleButton.find('.btn_t');
+                    $toggleIcon.attr('src', '/image/angle-right-solid.svg');
+                }
+            });
+
+        });
+        /*--------------------------------------------*/
+
+    </script>
+
+
+</head>
+
+<body>
+    <div class="container"></div>
+    <header th:insert="fragments/header :: header"></header>
+    <section>
+
+        <div id="map" style="width: 100%; height: 1000px;">
+            <button id="userLocationButton2">
+                <img src="/image/ping.png"></button>
+        </div>
+        <div id="sidebar" class="maper">
+            <div class="list">
+                <p>목적지 검색</p>
+                <form class="search-form">
+                    <input type="text" class="search-text" id="searchText" placeholder="주차장 이름 검색">
+                    <input type="button" class="search-btn" value="검색" onclick="searchParking()">
+                    <button id="userLocationButton1"><img src="/image/ping.png"></button>
+                    </button>
+                </form>
+
+                <div id="table"></div>
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center" id="pagination"></ul>
+                </nav>
+                <button id="toggleButton">
+                    <span class="btn_t"></span>
+                    <img id="toggleIcon" src="/image/angle-right-solid.svg" alt="OPEN">
+                </button>
+            </div>
+
+        </div>
+
+
+
+
+
+        <script>
+            $(document).ready(function () {
+                var originalItems; // 초기 items 배열을 보존하기 위한 변수
+                var currentPage = 1; //첫페이지
+                var numItemsPerPage = 8; //페이지당 보여줄 행의수
+                var map; //map변수 선언
+                var markers = []; //마커를 초기화 하기 위한 마커 배열 선언
+                var userLatLng;
+                var customMarkerImageUrl = '/image/marker.png';
+                var customMarkerImageSize = new kakao.maps.Size(50, 50);
+                // Kakao Map 스크립트가 로드된 후에 실행
+                kakao.maps.load(function () {
+                    var container = document.getElementById('map');
+                    var mapOptions = {
+                        center: new kakao.maps.LatLng(37.5665, 126.9780),
+                        level: 3
+                    };
+
+                    var map = new kakao.maps.Map(container, mapOptions);
+
+
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(function (position) {
+                            userLatLng = new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                            // 사용자의 현재 위치에 핑 표시
+                            var marker = new kakao.maps.Marker({
+                                position: userLatLng,
+                                map: map,
+                                title: '현재 위치',
+                                image: new kakao.maps.MarkerImage(
+                                    '/image/ping.png',
+                                    new kakao.maps.Size(40, 40),
+                                    {
+                                        offset: new kakao.maps.Point(20, 40)
+                                    }
+                                )
+                            });
+
+                            // 반경 1km를 표시하는 원 생성
+                            var circle = new kakao.maps.Circle({
+                                center: userLatLng,
+                                radius: 100,  // 반경 1km
+                                strokeWeight: 1,  // 선의 두께
+                                strokeColor: '#3366FF',  // 선 색상
+                                strokeOpacity: 0.6,  // 선 투명도
+                                fillColor: '#3366FF',  // 채우기 색상
+                                fillOpacity: 0.2  // 채우기 투명도
+                            });
+
+                            // 지도에 원 표시
+                            circle.setMap(map);
+                            map.setCenter(userLatLng);
+                            console.log(userLatLng);
+                            $.ajax({
+                                url: '/seoulparking/freeparkingList',
+                                method: 'GET',
+                                success: function (parkingLocations) {
+                                    console.log(parkingLocations);
+                                    originalItems = parkingLocations; // 초기 배열 보존
+                                    items = originalItems.concat(); // concat을 사용하여 복사본 생성
+
+                                    // 주변 주차장을 검색하고 표시하는 함수 호출
+                                    searchNearbyParking(userLatLng);
+                                    function calculateDistance(lat1, lon1, lat2, lon2) {
+                                        var R = 6371; // 지구의 반지름 (단위: km)
+                                        var dLat = (lat2 - lat1) * (Math.PI / 180);//두 지점 간의 위도 및 경도 차이를 라디안 단위로 계산합니다
+                                        var dLon = (lon2 - lon1) * (Math.PI / 180);//라디안 단위란?원주에 대한 비율로 각도를 나타냄
+                                        var a =//하버사인 공식을 적용한 것으로, 중심각을 계산합니다. 하버사인의 제곱 값들을 더하고,
+                                            // 코사인을 사용하여 위도에 대한 계산을 수행하고, 경도에 대한 부분도 함께 계산합니다.
+                                            //하버사인 공식이란?구의 표면에서 두 지점 간의 최단 거리를 구하는 공식이다.
+                                            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                                            Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) *
+                                            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+                                        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));//중심각을 사용하여 거리를 계산합니다.
+                                        var distance = R * c; // 거리 (단위: km)
+                                        return distance;
+                                    }
+                                    // 지도 이동 완료 시 이벤트 등록
+                                    kakao.maps.event.addListener(map, 'idle', function () {
+                                        // 현재 지도의 중심 좌표를 가져와서 주변 주차장 검색
+                                        var centerLatLng = map.getCenter();
+                                        searchNearbyParking(centerLatLng);
+                                    });
+                                    // 서치니어바이파킹 함수 정의
+                                    function searchNearbyParking(userLatLng) {
+                                        if (userLatLng && userLatLng.Ma !== undefined && userLatLng.La !== undefined) {
+                                            var radius = 1;
+                                            var nearbyParking = originalItems.filter(function (location) {
+                                                var parkingLatLng = {
+                                                    lat: Number(location.fclty_LA),
+                                                    lon: Number(location.fclty_LO)
+                                                };
+
+                                                // userLatLng가 정의되어 있는 경우에만 사용
+                                                var distance = calculateDistance(userLatLng.getLat(), userLatLng.getLng(), parkingLatLng.lat, parkingLatLng.lon);
+                                                return distance <= radius;
+                                            });
+
+                                            items = nearbyParking.concat();
+                                            showItems(1);
+                                        } else {
+                                            console.error('userLatLng가 정의되어 있지 않거나 Ma, La 값이 없습니다.');
+                                        }
+                                    }
+                                    // 서치파킹 함수 정의
+                                    function searchParking() {
+                                        var searchText = $('#searchText').val().trim().toLowerCase();
+
+                                        $.ajax({//ajax를 사용하여 서버로 데이터를 비동기적으로 보낸다.
+                                            //저기 url은 컨트롤러 클래스에 정의 되어있다.
+                                            url: '/seoulparking/search',
+                                            method: 'POST',
+                                            data: { searchText: searchText },
+                                            success: function (filteredItems) {
+                                                console.log(searchText);
+                                                items = filteredItems.slice();
+                                                showItems(1);
+                                            },
+                                            error: function () {
+                                                console.error('주차장 검색에 실패했습니다.');
+                                            }
+                                        });
+                                    }
+
+                                    // 검색 버튼에 클릭 이벤트 핸들러를 연결
+                                    $('.search-btn').on('click', function () {
+                                        searchParking();
+                                    });
+
+                                    showItems(1);
+                                    initializePagination();
+                                },
+                                error: function () {
+                                    console.error('주차 데이터를 불러오는 데 실패했습니다.');
+                                }
+                            });
+
+                        }, function (error) {
+                            console.error('Error getting user location:', error);
+                        });
+                    } else {
+                        console.error('Geolocation is not supported by this browser.');
+                    }
+
+
+
+                    // 사용자 위치로 돌아가는 버튼 클릭 이벤트 핸들러
+                    $('#userLocationButton').on('click', function (event) {
+                        event.preventDefault(); // 기본 동작 방지
+
+                        if (userLatLng) {
+                            map.panTo(userLatLng);
+                        } else {
+                            console.error('사용자 위치를 찾을 수 없습니다.');
+                            alert('사용자 위치를 찾을 수 없습니다.');
+                        }
+                    });
+
+
+
+
+                    function initializePagination() {
+                        // 페이징 처리
+                        var totalPages = Math.ceil(items.length / numItemsPerPage);
+                        $('#pagination').empty(); // 기존 페이지 버튼 비우기
+                        /*
+                        <li class="page-item">: 이 부분은 페이지네이션의 각 페이지 번호나
+                        이전/다음 버튼 등을 감싸는 리스트 아이템을 나타냅니다.
+                        Bootstrap에서 페이지네이션을 스타일링하기 위해 사용되는 클래스입니다.
+                        <a class="page-link" href="#" aria-label="Previous">: 이 부분은 실제로 클릭 가능한 페이지네이션
+                        요소를 나타냅니다. <a> 태그는 링크를 생성합니다.
+                        page-link 클래스는 Bootstrap에서 페이지네이션에 스타일을 적용하는 클래스이며,
+                        href="#"은 클릭 가능한 링크를 정의합니다.
+                        aria-label="Previous"는 이 링크의 역할을 설명하는 접근성 속성입니다.
+                        <span aria-hidden="true">&laquo;</span>:
+                        이 부분은 이전 페이지로 이동하는 화살표(«)를 나타냅니다.
+                        <span> 태그는 텍스트를 그룹화하는데 사용되며,
+                        aria-hidden="true"는 이 텍스트가 스크린 리더 등에서 감춰진다는 것을 나타냅니다.
+                         */
+                        var prevItem = $('<li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>');
+                        prevItem.on('click', function (event) {
+                            event.preventDefault();
+                            if (currentPage > 1) {
+                                showItems(currentPage - 1);
+                            }
+                        });
+                        $('#pagination').append(prevItem);
+
+                        // 현재 페이지를 기준으로 이전과 이후의 페이지를 표시
+                        var startPage = Math.max(1, currentPage - 5);
+                        var endPage = Math.min(totalPages, startPage + 9);
+
+                        for (var i = startPage; i <= endPage; i++) {
+                            var pageItem = $('<li class="page-item"><a class="page-link" href="#">' + i + '</a></li>');
+
+                            // 페이지 버튼 클릭 이벤트 핸들러 설정
+                            pageItem.on('click', function (event) {
+                                event.preventDefault();
+                                var page = parseInt($(this).text());
+                                showItems(page);
+                            });
+
+                            $('#pagination').append(pageItem);
+                        }
+
+                        var nextItem = $('<li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>');
+                        nextItem.on('click', function (event) {
+                            event.preventDefault();
+                            if (currentPage < totalPages) {
+                                showItems(currentPage + 1);
+                            }
+                        });
+                        $('#pagination').append(nextItem);
+                    }
+
+                    // 특정 페이지의 데이터 표시 함수
+                    function showItems(page) {
+                        currentPage = page;
+                        var start = (page - 1) * numItemsPerPage;
+                        var end = start + numItemsPerPage;
+
+                        // 이전 페이지의 마커들을 삭제
+                        for (var i = 0; i < markers.length; i++) {
+                            markers[i].setMap(null);
+                        }
+                        markers = []; // 배열 비우기
+
+                        $('#table').empty(); // 리스트 담을 div 비우기
+
+                        // 전체 페이지에 속하는 아이템 중 현재 페이지에 해당하는 아이템만 표시
+                        for (var i = start; i < end && i < items.length; i++) {
+                            var location = items[i];
+
+                            // 테이블을 생성하여 데이터 추가
+                            var table = $('<table>');
+                            var tableRow1 = $('<tr>');
+                            var parkingNameCell = $('<th>').text('주차장 이름 : ');
+                            var parkingNameDataCell = $('<td>').text(location.fcltyNM || '이름 없음');
+                            tableRow1.append(parkingNameCell, parkingNameDataCell);
+
+                            var tableRow2 = $('<tr>');
+                            var addressCell = $('<td>').text(location.rdnmadrNM || '주소 없음');
+                            var phoneNumberCell = $('<td>').text(location.tel_NO || '전화번호 없음');
+                            var maxDailyFeeCell = $('<td>').text(location.bass_PRICE || '무료');
+                            tableRow2.append(addressCell, phoneNumberCell, maxDailyFeeCell);
+
+                            table.append(tableRow1, tableRow2);
+                            $('#table').append(table); // 리스트를 담을 div에 테이블 추가
+                            table.css({
+                                'width':'100%',
+                                'height':'60px',
+                                'border-bottom':'1px solid #cfcfcf',
+                            });
+                            // 테이블을 클릭했을 때 해당 마커의 위치로 지도를 이동하는 이벤트 추가
+// 클릭 이벤트 핸들러를 클로저로 만들어서 location 값을 유지
+                            tableRow1.on('click', (function (clickedLocation) {
+                                return function () {
+                                    console.log(clickedLocation);
+                                    moveToLocation(clickedLocation);
+                                    event.preventDefault(); // 기본 동작 방지
+                                };
+                            })(location));
+
+                            var customMarkerImageOptions = {
+                                offset: new kakao.maps.Point(25, 50) // 마커 이미지의 기준 좌표 설정
+                            };
+
+
+                            // 지도에 마커 표시
+                            var markerPosition = new kakao.maps.LatLng(Number(location.fclty_LA), Number(location.fclty_LO));
+                            var marker = new kakao.maps.Marker({
+                                position: markerPosition,
+                                image: new kakao.maps.MarkerImage(customMarkerImageUrl, customMarkerImageSize, customMarkerImageOptions)
+                            });
+                            // 마커 클릭 이벤트 핸들러 함수
+                            function markerClicked(marker, location) {
+                                // 클릭한 마커의 위치를 가져와서 지도를 해당 위치로 이동
+                                var markerPosition = marker.getPosition();
+                                map.panTo(markerPosition);
+                            }
+                            // 마커에 클릭 이벤트 추가
+                            kakao.maps.event.addListener(marker, 'click', function (marker, location) {
+                                return function () {
+                                    markerClicked(marker, location);
+                                };
+                            }(marker, location));
+                            // 정보 창을 생성하고 마커에 연결
+                            var infowindow = new kakao.maps.InfoWindow({
+                                content: '<div style="font-weight: bold;">' + location.fcltyNM + '</div>' +
+                                    '<div>주차 공간 수: ' + location.parkng_SPCE_CO + '</div>'
+                            });
+
+                            // 마커에 마우스 오버 이벤트 추가
+                            kakao.maps.event.addListener(marker, 'mouseover', function (marker, infowindow) {
+                                return function () {
+                                    infowindow.open(map, marker);
+                                };
+                            }(marker, infowindow));
+
+                            // 마커에 마우스 아웃 이벤트 추가
+                            kakao.maps.event.addListener(marker, 'mouseout', function (infowindow) {
+                                return function () {
+                                    infowindow.close();
+                                };
+                            }(infowindow));
+
+                            marker.setMap(map);
+                            markers.push(marker); // 배열에 추가
+                        }
+                        // 지도 이동 함수
+                        function moveToLocation(location) {
+                            var markerPosition1 = new kakao.maps.LatLng(Number(location.fclty_LA), Number(location.fclty_LO));
+                            // 사용자가 클릭한 마커로 지도 이동
+                            map.panTo(markerPosition1);
+                            map.setCenter(markerPosition1);
+
+                        }
+
+                        // 현재 페이지를 기준으로 페이징 버튼 업데이트
+                        initializePagination();
+                    }
+
+
+                });
+
+            });
+
+        </script>
+    </section>
+    <footer th:include="fragments/footer :: footer"></footer>
+</body>
+
+</html>

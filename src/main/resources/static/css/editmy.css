@@ -1,7 +1,7 @@
 
 /*--------------------------------------------------------*/
 section {
-    height: 1000px;
+    height: 1200px;
     width: 100%;
     z-index: -1;
 }
@@ -43,7 +43,7 @@ section {
     border-bottom: 1px solid rgb(204, 204, 204);
 }
 .basic .text{
-    width: 140px;
+    width: 360px;
     height: 30px;
     margin-bottom: 15px;
 }
@@ -76,7 +76,14 @@ section {
     justify-content: flex-start;
 }
 .pw1 input{
-    margin-left: 47px;
+    margin-left: 62px;
+    border: 0px;
+}
+.pw2 p{
+    width: 115px;
+}
+.pw2 input{
+    margin-left: 25px;
     border: 0px;
 }
 .basic .name{
@@ -85,7 +92,6 @@ section {
 .name input{
     margin-left: 110px;
     border: 0px;
-    cursor: pointer;
 }
 .basic .number{
     justify-content: flex-start;
