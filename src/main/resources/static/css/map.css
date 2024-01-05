@@ -15,11 +15,13 @@ section {
     width: 100%;
     display: flex;
 }
+
 #wrap {
-    width:100%;
-    height:100px;
-    background:white;
+    width: 100%;
+    height: 100px;
+    background: white;
 }
+
 #sidebar {
     background: white;
     margin-top: 100px;
@@ -36,6 +38,7 @@ section {
     margin: 0 0 20px;
     list-style: none;
 }
+
 #toggleButton {
     background: none;
     background: black;
@@ -50,11 +53,12 @@ section {
     z-index: 1;
 }
 
-.map{
+.map {
     width: 100%;
     height: 97vh;
 }
-.list p{
+
+.list p {
     line-height: 50px;
     width: 100%;
     height: 50px;
@@ -64,77 +68,89 @@ section {
     border-bottom: 1px solid black;
 }
 
-.lible{
+.lible {
     border-bottom: 1px solid #cfcfcf;
 }
 
 
-.search-form{
+.search-form {
     display: flex;
     justify-content: space-around;
     text-align: center;
     padding: 5px;
     border-bottom: 1px solid black;
 }
-.search-form>.search-text{
+
+.search-form > .search-text {
     display: block;
     width: 300px;
     height: 30px;
 }
-.search-form>.search-btn{
+
+.search-form > .search-btn {
     display: block;
     width: 70px;
     height: 30px;
-    margin-top:3px;
+    margin-top: 3px;
 }
-#table{
+
+#table {
     width: 100%;
     height: 650px;
 }
-#table th{
+
+#table th {
     width: 100px;
     /*font-weight: bold;*/
     padding: 0;
     text-align: left;
 }
-#table td{
+
+#table td {
     width: 70px;
     font-size: 13px;
     text-align: left;
 }
-#table tr:nth-child(1){
+
+#table tr:nth-child(1) {
     color: rgb(0, 119, 255);
     font-weight: bold;
 }
-nav{
+
+nav {
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 300px;
 }
-#userLocationButton1 img{
+
+#userLocationButton1 img {
     width: 30px;
     height: 30px;
 }
+
 /*-----------------------------------------------------*/
 @media screen and (min-width: 625px) {
-    .sign_phone{
+    .sign_phone {
         display: none;
     }
-    #userLocationButton2{
+
+    #userLocationButton2 {
         display: none;
     }
 
 }
+
 @media all and (max-width: 500px) {
     footer {
         display: none;
     }
 
-    #userLocationButton1{
+    #userLocationButton1 {
         display: none;
     }
-    #userLocationButton2{
+
+    #userLocationButton2 {
         position: absolute;
         top: 10%;
         left: 5%;
@@ -143,18 +159,28 @@ nav{
         background-color: white;
         border-radius: 3px 3px 3px 3px;
     }
-    #userLocationButton2 img{
+
+    #userLocationButton2 img {
         width: 30px;
         height: 30px;
     }
+
     #userLocationButton2:active {
-        box-shadow: inset -.3rem -.1rem 1.4rem  #999999, inset .3rem .4rem .8rem #BEC5D0;
+        box-shadow: inset -.3rem -.1rem 1.4rem #999999, inset .3rem .4rem .8rem #BEC5D0;
         cursor: pointer;
     }
-#sidebar{
-    z-index: 3;
-    position: absolute;
-    top: -2%;
-}
+
+    #sidebar {
+        z-index: 3;
+        position: absolute;
+        top: -2%;
+        margin-top: 100px;
+        width: 300px;
+        height: 100%;
+        left: -300px;
+    }
+    #toggleButton{
+        left: 300px
+    }
 
 }

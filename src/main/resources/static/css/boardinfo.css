@@ -106,38 +106,43 @@ button{
         display: none;
     }
     section{
-        width: 500px;
-        height: 800px
+        width: 360px;
+        height: 800px;
+        margin: 0 auto;
     }
     .bord{
-        width: 450px;
+        width: 360px;
+        margin: 0 auto;
     }
     .bord-table{
-        width: 450px;
+        width: 360px;
     }
     tr{
-        font-size: 13px;
+        font-size: 10px;
     }
     thead tr{
-        font-size: 15px;
+        font-size: 13px;
+    }
+    tbody{
+        padding: 5px;
     }
     .page{
-        width: 450px;
+        width: 360px;
     }
     .paging{
         margin: 0 auto;
     }
     .bord ul{
-        width: 450px;
+        width: 360px;
     }
     select{
-        width: 80px;
+        width: 70px;
         height: 30px;
         padding: 0;
         flex-wrap: nowrap;
     }
     .bord ul input{
-        width: 200px;
+        width: 130px;
         height: 30px;
     }
     button{

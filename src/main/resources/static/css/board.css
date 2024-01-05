@@ -133,4 +133,53 @@ background-color: black;
     footer {
         display: none;
     }
+    .bord{
+        width: 360px;
+        margin-top: 90px;
+    }
+    .form_a{
+        width: 360px;
+    }
+    .form_a .wirte_form{
+        width: 280px;
+    }
+    .form_a div{
+        font-size: 15px;
+    }
+    .detail{
+        height: 100px;
+    }
+    #bbsCreated_footer{
+        width: 360px;
+        margin-left: 0;
+    }
+    .comment{
+        width: 360px;
+    }
+    .comment input{
+        width: 130px;
+    }
+    .comment-title{
+        margin-top: 30px;
+    }
+    .comment button{
+        width: 80px;
+        height: 30px;
+    }
+    #commentWriter{
+        width: 60px;
+    }
+    .d_num{
+        width: 150px;
+    }
+    .d_writer{
+        width: 120px;
+    }
+    .com{
+        width: 360px;
+    }
+    .com table{
+        width: 360px;
+        font-size: 15px;
+    }
 }

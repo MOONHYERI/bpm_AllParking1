@@ -69,10 +69,47 @@ section {
     .sign_phone{
         display: none;
     }
-
 }
 @media all and (max-width: 500px) {
     footer {
         display: none;
+    }
+    section{
+        height: 500px;
+    }
+    .bord h2{
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .bord{
+        width: 360px;
+        margin: 0 auto;
+        position: absolute;
+        top: 30%;
+        transform: translateX(-50%);
+    }
+    form{
+        width: 360px;
+    }
+    .bbsCreated_bottomLine dl dt{
+        width: 70px;
+    }
+    #bbsCreated{
+        width: 360px;
+        border: 0.5px solid #666;
+        border-radius: 10px;
+    }
+    .boxTF{
+        width: 240px;
+    }
+    .boxTA{
+        width: 250px;
+        height: 150px;
+        margin-top: 5px;
+    }
+    #bbsCreated_footer{
+        width: 360px;
+        margin-top: 15px;
+        margin-left: 0;
     }
 }

@@ -47,14 +47,11 @@
                 <div class="mail">
                     <p th:for="useremail">이메일</p>
                     <p class="text" th:text="${user?.useremail}"></p>
-
                 </div>
                 <h3>차량정보</h3>
                 <div class="carinfo">
                     <p th:for="carNum">차량번호</p>
                     <p  class="text" th:text="${user?.carNum}"></p>
-
-
                 </div>
                 <div class="bt1">
                     <input type="button" class="submit" name="회원정보 수정" value="회원정보 수정" onclick="location.href='/member/edit'">

@@ -136,9 +136,9 @@ public class UserController {
     public String userDeletePage(Authentication auth, Model model) {
         UserEntity user = userService.myInfo(auth.getName());
         model.addAttribute("userDTO", UserDTO.toUserDTO(user));
-        return "user/delete";
+        return "user/delete1";
     }
-    @PostMapping("/delete")
+    @PostMapping("/delete1")
     public String userDelete(@ModelAttribute UserDTO dto, Authentication auth, Model model) {
         Boolean deleteSuccess = userService.delete(auth.getName(), dto.getNowPassword());
         if (deleteSuccess) {
@@ -151,7 +151,5 @@ public class UserController {
             return "printMessage";
         }
     }
-
-
 
 }

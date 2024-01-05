@@ -159,7 +159,7 @@ section {
         display: none;
     }
     section{
-        width: 480px;
+        width: 360px;
         height: 1200px;
     }
     .join{
@@ -170,7 +170,7 @@ section {
         width: 480px;
     }
     .basic{
-        width: 430px;
+        width: 360px;
         margin: 0 auto;
     }
     label{
@@ -178,7 +178,7 @@ section {
         width: 400px;
     }
     .joininfo .text{
-        width: 100px;
+        width: 170px;
     }
     .id .text{
         margin-left: 75px;
@@ -198,11 +198,17 @@ section {
     .mail .text{
         margin-left: 75px;
     }
+    .carinfo .text{
+        margin-left: 60px;
+    }
     .error-div{
         margin-left: 30px;
     }
     .carinfo{
-        margin: 0 auto;
-        width: 430px;
+        width: 360px;
+    }
+    .bt{
+        width: 65px;
+        height: 35px;
     }
 }

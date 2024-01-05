@@ -37,6 +37,7 @@ section {
 
 #bbsCreated {
     width: 800px;
+    padding: 10px;
     border-top: 1px solid black;
 }
 #bbsCreated_footer{
@@ -80,5 +81,55 @@ section {
 @media all and (max-width: 500px) {
     footer {
         display: none;
+    }
+    section{
+        height: 500px;
+    }
+    .bord h2{
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .bord{
+        width: 360px;
+        margin: 0 auto;
+        position: absolute;
+        top: 30%;
+        transform: translateX(-50%);
+    }
+    .bord dl{
+        width: 340px;
+    }
+    form{
+        width: 360px;
+    }
+    bbsCreated_bottomLine{
+        display: none;
+    }
+    .hidden_input{
+        display: none;
+    }
+    .bbsCreated_bottomLine dl dt{
+        width: 70px;
+    }
+    #bbsCreated{
+        width: 360px;
+        border: 0.5px solid #666;
+        border-radius: 10px;
+    }
+    #bbsCreated_content{
+        margin-left: 0;
+    }
+    .boxTF{
+        width: 240px;
+    }
+    .boxTA{
+        width: 250px;
+        height: 150px;
+        margin-top: 5px;
+    }
+    #bbsCreated_footer{
+        width: 250px;
+        margin: 0 auto;
+        margin-top: 20px;
     }
 }
