@@ -201,9 +201,12 @@ section {
         margin-left: 0;
     }
     .basic .text{
-        width: 0;
+        width: 100px;
     }
     .carinfo{
-        width: 150px;
+        width: 360px;
+    }
+    .carinfo .text{
+        width: 220px;
     }
 }

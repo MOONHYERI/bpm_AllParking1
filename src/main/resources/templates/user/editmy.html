@@ -11,7 +11,18 @@
     <link rel="stylesheet" th:href="@{/css/footer.css}">
 
     <script th:src="@{/js/header.js}"></script>
-
+    <script>
+        window.embeddedChatbotConfig = {
+            chatbotId: "eL2rD3ATwZFP2lSwcWbqY",
+            domain: "www.chatbase.co"
+        }
+    </script>
+    <script
+            src="https://www.chatbase.co/embed.min.js"
+            chatbotId="eL2rD3ATwZFP2lSwcWbqY"
+            domain="www.chatbase.co"
+            defer>
+    </script>
     <title>ALL PARKING
     </title>
 
@@ -37,9 +48,9 @@
                     <p>비밀번호</p>
                     <input type="password" class="text" th:field="*{nowPassword}" placeholder="현재 비밀번호를 입력해주세요"
                            th:errorclass="error-input"/>
+                <span th:class="error-div" th:errors="*{nowPassword}"></span>
 
                 </label>
-                <span th:class="error-div" th:errors="*{nowPassword}"></span>
             </div>
             <div class="pw1">
                 <label th:for="newPassword">
@@ -89,6 +100,11 @@
             </div>
         </form>
     </div>
+    <iframe
+            src="https://www.chatbase.co/chatbot-iframe/eL2rD3ATwZFP2lSwcWbqY"
+            frameborder="0"
+            style="display: none"
+    ></iframe>
 </section>
 <footer th:include="fragments/footer :: footer"></footer>
 </body>

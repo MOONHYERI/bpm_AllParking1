@@ -11,6 +11,18 @@
     <link rel="stylesheet" th:href="@{/css/footer.css}">
 
     <script th:src="@{/js/header.js}"></script>
+    <script>
+        window.embeddedChatbotConfig = {
+            chatbotId: "eL2rD3ATwZFP2lSwcWbqY",
+            domain: "www.chatbase.co"
+        }
+    </script>
+    <script
+            src="https://www.chatbase.co/embed.min.js"
+            chatbotId="eL2rD3ATwZFP2lSwcWbqY"
+            domain="www.chatbase.co"
+            defer>
+    </script>
     <title>주차의 민족
     </title>
 
@@ -106,7 +118,11 @@
 
         </ul>
     </div>
-
+    <iframe
+            src="https://www.chatbase.co/chatbot-iframe/eL2rD3ATwZFP2lSwcWbqY"
+            frameborder="0"
+            style="display: none"
+    ></iframe>
 
 </section>
 <footer th:include="fragments/footer :: footer"></footer>

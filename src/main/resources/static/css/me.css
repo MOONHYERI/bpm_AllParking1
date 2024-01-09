@@ -137,11 +137,6 @@ section .moveTopBtn.onn {
 
 /*-------------------------------------------------------*/
 
-.chatbot {
-    position: fixed;
-    top: 1000px;
-    bottom: 500px;
-}
 
 /*-------------------------------------------------------*/
 
@@ -189,7 +184,7 @@ section .moveTopBtn.onn {
 
     /*---------------------------*/
     .sec2 .me2 {
-        width: 400px;
+        width: 380px;
         height: 250px;
         display: inline-block;
         position: absolute;
@@ -220,8 +215,8 @@ section .moveTopBtn.onn {
     }
 
     .me4 img {
-        width: 450px;
-        height: 170px;
+        width: 400px;
+        height: 150px;
     }
 
     /*---------------------------------------*/

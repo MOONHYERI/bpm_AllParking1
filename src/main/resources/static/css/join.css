@@ -125,14 +125,7 @@ section {
     border-radius: 5px;
     cursor: pointer;
 }
-.error-input {
-    border-color: red;
-}
 
-.error-div {
-    font-size: 13px;
-    color: red;
-}
 
 
 /* .id{

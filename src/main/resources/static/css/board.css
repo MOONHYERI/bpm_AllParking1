@@ -121,7 +121,9 @@ background-color: black;
 .d_time{
     width: 250px;
 }
-
+button{
+    cursor: pointer;
+}
 /*-------------------------------------------------------*/
 @media screen and (min-width: 625px) {
     .sign_phone{
@@ -144,7 +146,7 @@ background-color: black;
         width: 280px;
     }
     .form_a div{
-        font-size: 15px;
+        font-size: 14px;
     }
     .detail{
         height: 100px;
@@ -174,6 +176,9 @@ background-color: black;
     }
     .d_writer{
         width: 120px;
+    }
+    .d_contents{
+        width: 400px;
     }
     .com{
         width: 360px;

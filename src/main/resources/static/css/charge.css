@@ -77,7 +77,6 @@ h2{
     border: 1px solid #666;
     border-radius: 40px;
     text-align: center;
-    padding-top: 20px;
     margin-left:150px;
 }
 .pay{
@@ -94,7 +93,52 @@ h2{
 
 }
 @media all and (max-width: 500px) {
+    section{
+        height: 1000px;
+    }
     footer {
         display: none;
+    }
+    h2{
+        line-height: 0;
+    }
+    .charge_form1{
+        width: 360px;
+        height: 200px;
+        display: block;
+        position: absolute;
+        top: 32%;
+    }
+    .form1{
+        text-align: center;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+    .form2{
+        padding-bottom: 20px;
+    }
+    .form3{
+        text-align: center;
+    }
+    .charge_form1 p{
+        width: 360px;
+    }
+    .charge_form2{
+        height: 400px;
+        position: absolute;
+        top: 55%;
+    }
+    .charge_form2 .form3{
+        width: 360px;
+        height: 400px;
+        display: block;
+    }
+    .form3 h1{
+        margin-top: 40px;
+        margin-bottom: 30px;
+    }
+    .form3 .ioi{
+        margin-top: 40px;
+        margin-left: 0;
     }
 }

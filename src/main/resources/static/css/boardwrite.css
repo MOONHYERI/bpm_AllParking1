@@ -64,6 +64,9 @@ section {
     height: 200px;
     margin-bottom: 15px;
 }
+input{
+    cursor: pointer;
+}
 /*-------------------------------------------------------*/
 @media screen and (min-width: 625px) {
     .sign_phone{

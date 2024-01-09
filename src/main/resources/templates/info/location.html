@@ -12,6 +12,19 @@
 
 
     <script th:src="@{/js/header.js}"></script>
+
+    <script>
+        window.embeddedChatbotConfig = {
+            chatbotId: "eL2rD3ATwZFP2lSwcWbqY",
+            domain: "www.chatbase.co"
+        }
+    </script>
+    <script
+            src="https://www.chatbase.co/embed.min.js"
+            chatbotId="eL2rD3ATwZFP2lSwcWbqY"
+            domain="www.chatbase.co"
+            defer>
+    </script>
     <title>ALL PARKING
     </title>
 
@@ -38,7 +51,11 @@
                 서울 강서구 화곡로 149 <br>3층, 4층, 5층</p>
         </div>
     </div>
-
+    <iframe
+            src="https://www.chatbase.co/chatbot-iframe/eL2rD3ATwZFP2lSwcWbqY"
+            frameborder="0"
+            style="display: none"
+    ></iframe>
 </section>
 <footer th:include="fragments/footer :: footer"></footer>
 </body>

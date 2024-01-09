@@ -15,6 +15,7 @@ section {
 }
 .join h2{
     font-size: 30px;
+
 }
 .bt{
     width: 90px;
@@ -43,7 +44,7 @@ section {
     border-bottom: 1px solid rgb(204, 204, 204);
 }
 .basic .text{
-    width: 360px;
+    width: 160px;
     height: 30px;
     margin-bottom: 15px;
 }
@@ -69,7 +70,7 @@ section {
     border: 0px;
 }
 .basic .pw{
-    justify-content: flex-start;
+    justify-content: space-between;
 }
 .basic .pw label{
     display: flex;
@@ -178,5 +179,27 @@ section {
 @media all and (max-width: 500px) {
     footer {
         display: none;
+    }
+
+    .join {
+        width: 360px;
+        margin: 0;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+    }
+
+    .basic {
+        width: 360px;
+        margin-left: 0;
+    }
+    .basic .text{
+        width: 100px;
+    }
+    .carinfo{
+        width: 360px;
+    }
+    .carinfo .text{
+        width: 220px;
     }
 }

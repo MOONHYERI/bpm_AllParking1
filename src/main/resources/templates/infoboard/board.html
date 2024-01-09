@@ -11,84 +11,97 @@
     <link rel="stylesheet" th:href="@{/css/footer.css}">
 
     <script th:src="@{/js/header.js}"></script>
-    <title>board
-    </title>
-
-
+    <script>
+        window.embeddedChatbotConfig = {
+            chatbotId: "eL2rD3ATwZFP2lSwcWbqY",
+            domain: "www.chatbase.co"
+        }
+    </script>
+    <script
+            src="https://www.chatbase.co/embed.min.js"
+            chatbotId="eL2rD3ATwZFP2lSwcWbqY"
+            domain="www.chatbase.co"
+            defer>
+    </script>
+    <title>board</title>
 
 </head>
 
 <body>
 <div class="container"></div>
 <header th:insert="fragments/header :: header"></header>
-    <section>
-        <div class="bord">
-            <div id="bbs">
-                <div id="bbs_title">
-                    <h2>공지사항</h2>
-                </div>
-                <div>
-                    <div class="form_a">
-                        <div class="title">
-                            <p>번호</p>
-                            <p th:text="${board.id}"></p>
-                        </div><div class="title">
-                            <p>제목</p>
-                            <p th:text="${board.boardTitle}"></p>
+<section>
+    <div class="bord">
+        <div id="bbs">
+            <div id="bbs_title">
+                <h2>공지사항</h2>
+            </div>
+            <div>
+                <div class="form_a">
+                    <div class="title">
+                        <p>번호</p>
+                        <p th:text="${board.id}"></p>
+                    </div>
+                    <div class="title">
+                        <p>제목</p>
+                        <p th:text="${board.boardTitle}"></p>
+                    </div>
+                    <div class="wirte_form">
+                        <div>
+                            <p>작 성 자</p>
+                            <p th:text="${board.boardWriter}"></p>
                         </div>
-                        <div class="wirte_form">
-                            <div>
-                                <p>작 성 자</p>
-                                <p th:text="${board.boardWriter}"></p>
-                            </div>
-                            <div>
-                                <p>시 간</p>
-                                <p th:text="${board.boardCreatedTime}"></p>
-                            </div>
-                            <div>
-                                <p>조회수</p>
-                                <p th:text="${board.boardHits}"></p>
-                            </div>
+                        <div>
+                            <p>시 간</p>
+                            <p th:text="${board.boardCreatedTime}"></p>
+                        </div>
+                        <div>
+                            <p>조회수</p>
+                            <p th:text="${board.boardHits}"></p>
                         </div>
                     </div>
-
                 </div>
-                <div>
-                    <div class="detail">
-                        <p th:text="${board.boardContents}"></p>
-                    </div>
-                    <div id="bbsCreated_footer">
-                        <button class="btn2" onclick="listReq()">목록</button>
-                        <button class="btn2" onclick="updateReq()">수정</button>
-                        <button class="btn2" onclick="deleteReq()">삭제</button>
-                    </div>
-                </div>
-
 
             </div>
+            <div>
+                <div class="detail">
+                    <p th:text="${board.boardContents}"></p>
+                </div>
+                <div id="bbsCreated_footer">
+                    <button class="btn2" onclick="listReq()">목록</button>
+                    <button class="btn2" onclick="updateReq()">수정</button>
+                    <button class="btn2" onclick="deleteReq()">삭제</button>
+                </div>
+            </div>
+
 
         </div>
 
-    </section>
+    </div>
+    <iframe
+            src="https://www.chatbase.co/chatbot-iframe/eL2rD3ATwZFP2lSwcWbqY"
+            frameborder="0"
+            style="display: none"
+    ></iframe>
+</section>
 <footer th:include="fragments/footer :: footer"></footer>
 </body>
 <script th:inline="javascript">
     const listReq = () => {
         console.log("목록 요청");
-        const page =[[${page}]];
-        location.href="/info/paging?page="+page;
+        const page = [[${page}]];
+        location.href = "/info/paging?page=" + page;
     }
-    const updateReq = () =>{
+    const updateReq = () => {
         console.log("수정 요청");
         const id = [[${board.id}]];
-        location.href="/info/update/"+id;
+        location.href = "/info/update/" + id;
     }
     const deleteReq = () => {
         console.log("삭제 요청");
-        const id =[[${board.id}]];
-        location.href="/info/delete/"+id;
+        const id = [[${board.id}]];
+        location.href = "/info/delete/" + id;
     }
-
 
 </script>
 

@@ -48,7 +48,7 @@ public class UserController {
         }
         userService.join(userJoinDTO);
         model.addAttribute("message","회원가입에 성공했습니다\n로그인하세요");
-        model.addAttribute("nextUrl","user/login");
+        model.addAttribute("nextUrl","/");
         return "printMessage";
 
     }
@@ -151,5 +151,6 @@ public class UserController {
             return "printMessage";
         }
     }
+
 
 }

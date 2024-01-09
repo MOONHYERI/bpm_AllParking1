@@ -15,44 +15,14 @@
     <script th:src="@{/js/header.js}"></script>
     <script type="text/javascript"
             src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=95d7d2504da439f6db9a4e285b808af8"></script>
+
+    <title>ALL PARKING
+    </title>
+    <style>
+
+    </style>
     <script>
-        window.embeddedChatbotConfig = {
-            chatbotId: "eL2rD3ATwZFP2lSwcWbqY",
-            domain: "www.chatbase.co"
-        }
-    </script>
-    <script
-            src="https://www.chatbase.co/embed.min.js"
-            chatbotId="eL2rD3ATwZFP2lSwcWbqY"
-            domain="www.chatbase.co"
-            defer>
-    </script>
-    <title>ALL PARKING</title>
-
-    <script>
-        /* $(function () {
-             var duration = 300;
-
-             var $side = $('#sidebar');
-             var $toggleButton = $('#toggleButton');
-             var $toggleIcon = $('#toggleIcon');
-
-             $toggleButton.on('click', function () {
-                 $side.toggleClass('open');
-
-                 if ($side.hasClass('open')) {
-                     $side.stop(true).animate({left: '0px'}, duration);
-                     $toggleButton.find('.btn_t');
-                     $toggleIcon.attr('src', '/image/angle-left-solid.svg');
-                 } else {
-                     $side.stop(true).animate({left: '-400px'}, duration);
-                     $toggleButton.find('.btn_t');
-                     $toggleIcon.attr('src', '/image/angle-right-solid.svg');
-                 }
-             });
-
-         });*/
-        $(function () {
+       /* $(function () {
             var duration = 300;
 
             var $side = $('#sidebar');
@@ -62,34 +32,56 @@
             $toggleButton.on('click', function () {
                 $side.toggleClass('open');
 
-                if (window.innerWidth > 500) {
-                    // 다바이스 크기가 500 이상일 때
-                    if ($side.hasClass('open')) {
-                        $side.stop(true).animate({left: '0px'}, duration);
-                        $toggleButton.find('.btn_t');
-                        $toggleIcon.attr('src', '/image/angle-left-solid.svg');
-                    } else {
-                        $side.stop(true).animate({left: '-400px'}, duration);
-                        $toggleButton.find('.btn_t');
-                        $toggleIcon.attr('src', '/image/angle-right-solid.svg');
-                    }
+                if ($side.hasClass('open')) {
+                    $side.stop(true).animate({left: '0px'}, duration);
+                    $toggleButton.find('.btn_t');
+                    $toggleIcon.attr('src', '/image/angle-left-solid.svg');
                 } else {
-                    // 다바이스 크기가 500 미만일 때
-                    if ($side.hasClass('open')) {
-                        $side.stop(true).animate({left: '0px'}, duration);
-                        $toggleButton.find('.btn_t');
-                        $toggleIcon.attr('src', '/image/angle-left-solid.svg');
-                    } else {
-                        $side.stop(true).animate({left: '-300px'}, duration);
-                        $toggleButton.find('.btn_t');
-                        $toggleIcon.attr('src', '/image/angle-right-solid.svg');
-                    }
+                    $side.stop(true).animate({left: '-400px'}, duration);
+                    $toggleButton.find('.btn_t');
+                    $toggleIcon.attr('src', '/image/angle-right-solid.svg');
                 }
             });
 
-            // 초기 로드 시에도 리사이즈 이벤트를 발생시켜 적용
-            $(window).resize();
-        });
+        });*/
+       $(function () {
+           var duration = 300;
+
+           var $side = $('#sidebar');
+           var $toggleButton = $('#toggleButton');
+           var $toggleIcon = $('#toggleIcon');
+
+           $toggleButton.on('click', function () {
+               $side.toggleClass('open');
+
+               if (window.innerWidth > 500) {
+                   // 다바이스 크기가 500 이상일 때
+                   if ($side.hasClass('open')) {
+                       $side.stop(true).animate({left: '0px'}, duration);
+                       $toggleButton.find('.btn_t');
+                       $toggleIcon.attr('src', '/image/angle-left-solid.svg');
+                   } else {
+                       $side.stop(true).animate({left: '-400px'}, duration);
+                       $toggleButton.find('.btn_t');
+                       $toggleIcon.attr('src', '/image/angle-right-solid.svg');
+                   }
+               } else {
+                   // 다바이스 크기가 500 미만일 때
+                   if ($side.hasClass('open')) {
+                       $side.stop(true).animate({left: '0px'}, duration);
+                       $toggleButton.find('.btn_t');
+                       $toggleIcon.attr('src', '/image/angle-left-solid.svg');
+                   } else {
+                       $side.stop(true).animate({left: '-300px'}, duration);
+                       $toggleButton.find('.btn_t');
+                       $toggleIcon.attr('src', '/image/angle-right-solid.svg');
+                   }
+               }
+           });
+
+           // 초기 로드 시에도 리사이즈 이벤트를 발생시켜 적용
+           $(window).resize();
+       });
 
 
 
@@ -131,11 +123,8 @@
         </div>
 
     </div>
-    <iframe
-            src="https://www.chatbase.co/chatbot-iframe/eL2rD3ATwZFP2lSwcWbqY"
-            frameborder="0"
-            style="display: none"
-    ></iframe>
+
+
 
     <script>
         $(document).ready(function () {
@@ -164,7 +153,7 @@
                         // 사용자의 현재 위치에 핑 표시
                         var marker = new kakao.maps.Marker({
                             position: userLatLng,
-                            map: map,
+                            map: map1,
                             title: '현재 위치',
                             image: new kakao.maps.MarkerImage(
                                 '/image/ping.png',
@@ -178,19 +167,20 @@
                         // 반경 1km를 표시하는 원 생성
                         var circle = new kakao.maps.Circle({
                             center: userLatLng,
-                            radius: 1000,  // 반경 1km
+                            radius: 100,  // 반경 1km
                             strokeWeight: 1,  // 선의 두께
                             strokeColor: '#3366FF',  // 선 색상
                             strokeOpacity: 0.6,  // 선 투명도
                             fillColor: '#3366FF',  // 채우기 색상
                             fillOpacity: 0.2  // 채우기 투명도
                         });
+
                         // 지도에 원 표시
-                        circle.setMap(map);
-                        map.setCenter(userLatLng);
+                        circle.setMap(map1);
+                        map1.setCenter(userLatLng);
                         console.log(userLatLng);
                         $.ajax({
-                            url: '/seoulparking/minyoungparkingList',
+                            url: '/seoulparking/parkingList',
                             method: 'GET',
                             success: function (parkingLocations) {
                                 console.log(parkingLocations);
@@ -214,12 +204,14 @@
                                     var distance = R * c; // 거리 (단위: km)
                                     return distance;
                                 }
+
                                 // 지도 이동 완료 시 이벤트 등록
-                                kakao.maps.event.addListener(map, 'idle', function () {
+                                kakao.maps.event.addListener(map1, 'idle', function () {
                                     // 현재 지도의 중심 좌표를 가져와서 주변 주차장 검색
-                                    var centerLatLng = map.getCenter();
+                                    var centerLatLng = map1.getCenter();
                                     searchNearbyParking(centerLatLng);
                                 });
+
                                 // 서치니어바이파킹 함수 정의
                                 function searchNearbyParking(userLatLng) {
                                     if (userLatLng && userLatLng.Ma !== undefined && userLatLng.La !== undefined) {
@@ -245,29 +237,15 @@
                                 // 서치파킹 함수 정의
                                 function searchParking() {
                                     var searchText = $('#searchText').val().trim().toLowerCase();
-                                    if (searchText == '서울시') {
-                                        searchText = '서울특별시';
-                                    }
-                                    // ajax로 데이터를 비동기 적으로 보낸다. 저기 url은 컨트롤러 클래스에 정의되어있다.
+                                    //ajax로 데이터를 비동기 적으로 보낸다. 저기 url은 컨트롤러 클래스에 정의되어있다.
                                     $.ajax({
-                                        url: '/seoulparking/search1',
+                                        url: '/seoulparking/search2',
                                         method: 'POST',
-                                        data: { searchText: searchText },
+                                        data: {searchText: searchText},
                                         success: function (filteredItems) {
                                             console.log(searchText);
                                             items = filteredItems.slice();
-
-                                            // 검색 결과가 없을 경우
-                                            if (items.length === 0) {
-                                                // 리스트에 "검색 결과가 없습니다" 메시지 추가 또는 표시
-                                                $('#table').html('<p>검색 결과가 없습니다.</p>');
-                                            } else {
-                                                // 검색 결과가 있을 경우
-                                                showItems(1);
-                                            }
-
-                                            // 검색 성공 후 검색창 비우기
-                                            $('#searchText').val('');
+                                            showItems(1);
                                         },
                                         error: function () {
                                             console.error('주차장 검색에 실패했습니다.');
@@ -373,14 +351,15 @@
                         var tableRow1 = $('<tr>');
 
                         var parkingNameCell = $('<th>').text('주차장 이름 : ');
-                        var parkingNameDataCell = $('<td class="parking-name">').text(location.fcltyNM || '주차장 이름 없음');
+                        var parkingNameDataCell = $('<td>').text(location.fcltyNM || '이름 없음');
                         tableRow1.append(parkingNameCell, parkingNameDataCell);
 
                         var tableRow2 = $('<tr>');
                         var addressCell = $('<td>').text(location.rdnmadrNM || '주소 없음');
                         var phoneNumberCell = $('<td>').text(location.tel_NO || '전화번호 없음');
-                        var maxDailyFeeCell = $('<td>').text(location.bass_PRICE+'원' || '요금정보 없음');
+                        var maxDailyFeeCell = $('<td>').text(location.bass_PRICE + '원' || '요금정보 없음');
                         tableRow2.append(addressCell, phoneNumberCell, maxDailyFeeCell);
+
                         table.append(tableRow1, tableRow2);
                         $('#table').append(table); // 리스트를 담을 div에 테이블 추가
                         table.css({
@@ -388,199 +367,35 @@
                             'height': '60px',
                             'border-bottom': '1px solid #cfcfcf',
                         });
-                        // 리스트 클릭 이벤트에 토글 함수 추가
-                        tableRow1.on('click', (function (clickedLocation, index) {
-                            return function (event) {
-                                event.preventDefault(); // 기본 동작 방지
-                                toggleInfoWindow(index);
+                        // 테이블을 클릭했을 때 해당 마커의 위치로 지도를 이동하는 이벤트 추가
+// 클릭 이벤트 핸들러를 클로저로 만들어서 location 값을 유지
+                        tableRow1.on('click', (function (clickedLocation) {
+                            return function () {
+                                console.log(clickedLocation);
                                 moveToLocation(clickedLocation);
+                                event.preventDefault(); // 기본 동작 방지
                             };
-                        })(location, i));
+                        })(location));
+                        // 지도 이동 함수
+
 
                         // 지도에 마커 표시
                         var customMarkerImageOptions = {
                             offset: new kakao.maps.Point(25, 50) // 마커 이미지의 기준 좌표 설정
                         };
                         var markerPosition = new kakao.maps.LatLng(Number(location.fclty_LA), Number(location.fclty_LO));
-
-                        // 마커 생성 시에 인포 윈도우도 함께 생성하여 저장
                         var marker = new kakao.maps.Marker({
                             position: markerPosition,
                             image: new kakao.maps.MarkerImage(customMarkerImageUrl, customMarkerImageSize, customMarkerImageOptions)
                         });
 
-                        // 인포 윈도우 생성
-                        var infowindow = new kakao.maps.InfoWindow({
-                            content: '<div id="customInfowindow">' +
-                                '<div class="title">' + location.fcltyNM + '</div>' +
-                                '<div class="description">주차 공간 수: ' + location.parkng_SPCE_CO + '</div>' +
-                                '</div>',
-                            removable: true
-                        });
-
-                        // 스타일을 적용할 CSS 정의
-                        var customInfowindowStyle = document.createElement('style');
-                        customInfowindowStyle.innerHTML = '#customInfowindow {' +
-                            '   max-width: 200px;' +
-                            '}' +
-                            '.title {' +
-                            '   font-weight: bold;' +
-                            '   white-space: nowrap;' +
-                            '   overflow: hidden;' +
-                            '   text-overflow: ellipsis;' +
-                            '   text-align: center;' +
-                            '}' +
-                            '.description {' +
-                            '   max-width: 200px;' +
-                            '}';
-                        document.head.appendChild(customInfowindowStyle);
-                        // 마커에 인포 윈도우 저장
-                        marker.infowindow = infowindow;
-
-                        selectedMarkerIndex = -1;
-                        function toggleInfoWindow(index) {
-                            // 선택한 마커의 인덱스가 이전에 선택한 것과 같으면 인포 윈도우를 닫고 초기화
-                            if (selectedMarkerIndex === index) {
-                                markers[selectedMarkerIndex].infowindow.close();
-                                selectedMarkerIndex = -1;
-                            } else {
-                                // 이전에 선택한 마커가 있으면 인포 윈도우를 닫고 초기화
-                                if (selectedMarkerIndex !== -1) {
-                                    markers[selectedMarkerIndex].infowindow.close();
-                                }
-                                // 선택한 마커의 인덱스를 저장하고 인포 윈도우를 열기
-                                selectedMarkerIndex = index;
-                                markers[index].infowindow.open(map, markers[index]);
-                            }
-                        }
-
                         // 마커 클릭 이벤트 핸들러 함수
                         function markerClicked(marker, location) {
-                            // 클릭한 마커의 위치를 가져와서 로드뷰의 중심 좌표로 설정
+                            // 클릭한 마커의 위치를 가져와서 지도를 해당 위치로 이동
                             var markerPosition = marker.getPosition();
-
-                            // 인포 윈도우 생성
-                            var infowindow = new kakao.maps.InfoWindow({
-                                content: '<div id="customInfowindow">' +
-                                    '<div class="title">' + location.fcltyNM + '</div>' +
-                                    '<div class="description">주차 공간 수: ' + location.parkng_SPCE_CO + '</div>' +
-                                    '<button id="roadviewBtn">로드뷰 보기</button>'+
-                                    '</div>',
-                                removable: true
-                            });
-
-                            // 스타일을 적용할 CSS 정의
-                            var customInfowindowStyle = document.createElement('style');
-                            customInfowindowStyle.innerHTML = '#customInfowindow {' +
-                                '   max-width: 200px;' +
-                                '}' +
-                                '.title {' +
-                                '   font-weight: bold;' +
-                                '   white-space: nowrap;' +
-                                '   overflow: hidden;' +
-                                '   text-overflow: ellipsis;' +
-                                '   text-align: center;' +
-                                '}' +
-                                '.description {' +
-                                '   max-width: 200px;' +
-                                '}';
-                            document.head.appendChild(customInfowindowStyle);
-
-                            // 인포윈도우를 마커 위에 표시
-                            infowindow.open(map, marker);
-
-                            // 로드뷰 보기 버튼 클릭 이벤트
-                            document.getElementById('roadviewBtn').addEventListener('click', function () {
-                                // 로드뷰 내 닫기 버튼 추가
-                                var closeBtn = document.createElement('button');
-                                closeBtn.id = 'closeBtn';
-                                closeBtn.style.position = 'absolute';
-                                closeBtn.style.top = '10px';
-                                closeBtn.style.right = '10px';
-                                closeBtn.style.cursor = 'pointer';
-                                closeBtn.style.color = 'white';
-                                closeBtn.style.backgroundColor = '#333';
-                                closeBtn.style.padding = '5px';
-                                closeBtn.style.borderRadius = '5px';
-                                closeBtn.innerHTML = '닫기';
-                                closeBtn.style.zIndex = '100000';
-
-                                // 로드뷰 컨테이너 동적 생성
-                                var roadviewContainer = document.createElement('div');
-                                roadviewContainer.id = 'roadview';
-                                roadviewContainer.style.width = '100%';
-                                roadviewContainer.style.height = '100%';
-                                roadviewContainer.style.position = 'absolute';
-                                roadviewContainer.style.top = '0';
-                                roadviewContainer.style.left = '0';
-                                roadviewContainer.style.zIndex = '99999';
-                                roadviewContainer.style.display = '';
-
-                                console.log("로드뷰 객체 초기화 전");
-                                var roadview = new kakao.maps.Roadview(roadviewContainer);
-                                console.log("로드뷰 객체 초기화 후");
-                                // 로드뷰 컨테이너 및 클로즈 버튼을 body에 추가
-                                document.body.appendChild(roadviewContainer);
-                                document.body.appendChild(closeBtn);
-
-                                // 로드뷰 클라이언트 객체 생성
-                                var roadviewClient = new kakao.maps.RoadviewClient();
-
-                                // 클릭한 마커 위치에서 가까운 로드뷰의 Pano ID를 가져와 로드뷰 표시
-                                roadviewClient.getNearestPanoId(markerPosition, 50, function (panoId) {
-                                    roadview.setPanoId(panoId, markerPosition);
-                                    console.log(panoId);
-                                    roadview.relayout();
-                                    roadviewContainer.style.visibility = 'visible'; // 로드뷰 컨테이너를 보이도록 설정
-
-                                    // 마커를 생성하고 로드뷰에 추가
-                                    var roadviewMarker = new kakao.maps.Marker({
-                                        position: markerPosition,
-                                        map: roadview
-                                    });
-
-                                    // 로드뷰 시점 설정 (마커를 바라보도록)
-                                    roadview.setViewpoint({
-                                        pan: 180, // 원하는 각도로 변경
-                                        tilt: 0
-                                    });
-
-                                    // 인포윈도우를 생성하여 로드뷰에 추가
-                                    var roadviewInfowindow = new kakao.maps.InfoWindow({
-                                        content: location.fcltyNM,
-                                        removable: true, // x 버튼 추가
-                                        zIndex: 2 // 다른 요소 위에 표시하기 위한 zIndex 설정
-                                    });
-                                    roadviewInfowindow.open(roadview, roadviewMarker);
-
-                                    // 클로즈 버튼 클릭 이벤트 함수
-                                    function closeBtnClicked() {
-                                        console.log("닫기 버튼 클릭");
-
-                                        // 로드뷰 컨테이너를 숨기고 삭제
-                                        roadviewContainer.style.visibility = 'hidden';
-                                        document.body.removeChild(roadviewContainer);
-
-                                        // closeBtn이 유효한 경우에만 제거
-                                        if (closeBtn && closeBtn.parentNode) {
-                                            closeBtn.parentNode.removeChild(closeBtn);
-                                        }
-                                    }
-                                    console.log("로드뷰 컨테이너 스타일:", roadviewContainer.style);
-                                    // 닫기 버튼에 클릭 이벤트 추가
-                                    closeBtn.addEventListener('click', closeBtnClicked);
-
-                                    // 인포윈도우가 닫힐 때 로드뷰 컨테이너를 숨기고 삭제
-                                    kakao.maps.event.addListener(roadviewInfowindow, 'close', function () {
-                                        roadviewContainer.style.visibility = 'hidden';
-                                        document.body.removeChild(roadviewContainer);
-                                        document.body.removeChild(closeBtn);
-                                    });
-
-                                });
-                            });
-                            map.panTo(markerPosition);
+                            map1.panTo(markerPosition);
                         }
+
                         // 마커에 클릭 이벤트 추가
                         kakao.maps.event.addListener(marker, 'click', function (marker, location) {
                             return function () {
@@ -588,50 +403,59 @@
                             };
                         }(marker, location));
 
-                        var currentinfowindow = null;
+                        // 정보 창을 생성하고 마커에 연결
+                        var infowindow = new kakao.maps.InfoWindow({
+                            content: '<div style="font-weight: bold;color:rgb(0, 119, 255);width: 100%;height: 100%;font-size: 13px;">' + location.fcltyNM + '<br></div>' +
+                                '<div style="width: 100%;height: 100%;font-size: 12px;">주차 공간 수: ' + location.parkng_SPCE_CO + '</div>'
+                        });
 
                         // 마커에 마우스 오버 이벤트 추가
-                        kakao.maps.event.addListener(marker, 'mouseover', function (marker, infowindow, location) {
+                        kakao.maps.event.addListener(marker, 'mouseover', function (marker, infowindow) {
                             return function () {
-                                // 마우스 오버시에는 주차장 정보가 있는 인포 윈도우 열기
-                                if (currentinfowindow) {
-                                    currentinfowindow.close();
-                                }
-                                currentinfowindow = infowindow;
-                                infowindow.open(map, marker);
+                                infowindow.open(map1, marker);
                             };
-                        }(marker, infowindow, location));
+                        }(marker, infowindow));
 
                         // 마커에 마우스 아웃 이벤트 추가
-                        kakao.maps.event.addListener(marker, 'mouseout', function () {
-                            // 마우스 아웃 시에는 현재 열린 인포 윈도우 닫기
-                            if (currentinfowindow) {
-                                currentinfowindow.close();
-                            }
-                        });
-                        marker.setMap(map);
+                        kakao.maps.event.addListener(marker, 'mouseout', function (infowindow) {
+                            return function () {
+                                infowindow.close();
+                            };
+                        }(infowindow));
+
+                        marker.setMap(map1);
                         markers.push(marker); // 배열에 추가
                     }
+
                     // 지도 이동 함수
                     function moveToLocation(location) {
                         var markerPosition1 = new kakao.maps.LatLng(Number(location.fclty_LA), Number(location.fclty_LO));
                         // 사용자가 클릭한 마커로 지도 이동
-                        map.panTo(markerPosition1);
+                        map1.panTo(markerPosition1);
+                        map1.setCenter(markerPosition1);
                     }
+
                     // 현재 페이지를 기준으로 페이징 버튼 업데이트
                     initializePagination();
+
                 }
-                // 사용자 위치로 돌아가는 버튼 클릭 이벤트 핸들러
+
                 $('#userLocationButton1').on('click', function (event) {
                     event.preventDefault(); // 기본 동작 방지
-                    console.log(userLatLng);
+
                     if (userLatLng) {
-                        console.log("Before Pan To - Current Zoom Level: ", map.getLevel());
-                        // 지도의 줌 레벨 설정
-                        map.setLevel(3);
-                        // 사용자의 위치로 지도 이동
-                        map.panTo(userLatLng);
-                        console.log("After Pan To - Current Zoom Level: ", map.getLevel());
+                        map1.panTo(userLatLng);
+                    } else {
+                        console.error('사용자 위치를 찾을 수 없습니다.');
+                        alert('사용자 위치를 찾을 수 없습니다.');
+                    }
+                });
+
+                $('#userLocationButton2').on('click', function (event) {
+                    event.preventDefault(); // 기본 동작 방지
+
+                    if (userLatLng) {
+                        map1.panTo(userLatLng);
                     } else {
                         console.error('사용자 위치를 찾을 수 없습니다.');
                         alert('사용자 위치를 찾을 수 없습니다.');
